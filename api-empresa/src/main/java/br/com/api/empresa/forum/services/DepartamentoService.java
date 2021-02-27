@@ -22,7 +22,7 @@ public class DepartamentoService {
 		this.departamentoRepository = departamentoRepository;
 	}
 
-	private Departamento findByIdDepartamento(Long id) {
+	public Departamento findByIdDepartamento(Long id) {
 		Optional<Departamento> dpto = this.departamentoRepository.findById(id);
 		if (!dpto.isPresent()) {
 			throw new DepartamentoNotFoundException("Departamento nao encontrado com esse codigo " + id);
