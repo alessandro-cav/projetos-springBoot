@@ -20,24 +20,31 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "DEPARTAMENTO")
-public class Departamento implements Serializable{
-	
+public class Departamento implements Serializable {
+
+	public Departamento(Long id, String nome, String sigla, String telefone) {
+		this.id = id;
+		this.nome = nome;
+		this.sigla = sigla;
+		this.telefone = telefone;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_DPTO")
 	private Long id;
-	
+
 	@Column(name = "NOME_DPTO")
 	private String nome;
-	
+
 	@Column(name = "SIGLA_DPTO")
 	private String sigla;
-	
+
 	@Column(name = "TELEFONE")
 	private String telefone;
-	
+
 	@OneToMany(mappedBy = "departamento")
 	private List<Empregado> empregado;
 }

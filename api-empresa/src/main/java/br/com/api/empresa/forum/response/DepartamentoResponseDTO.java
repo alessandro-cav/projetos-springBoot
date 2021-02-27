@@ -2,6 +2,7 @@ package br.com.api.empresa.forum.response;
 
 import java.io.Serializable;
 
+import br.com.api.empresa.forum.models.Departamento;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +21,10 @@ public class DepartamentoResponseDTO implements Serializable {
 	private String sigla;
 
 	private String telefone;
+
+	public static DepartamentoResponseDTO transformaObjetoEmDTO(Departamento departamento) {
+		return new DepartamentoResponseDTO(departamento.getId(), departamento.getNome(), departamento.getSigla(),
+				departamento.getTelefone());
+	}
 
 }

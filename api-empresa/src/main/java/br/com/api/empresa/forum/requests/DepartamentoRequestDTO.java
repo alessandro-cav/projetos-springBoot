@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;
 
+import br.com.api.empresa.forum.models.Departamento;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,9 @@ public class DepartamentoRequestDTO implements Serializable {
 
 	@NotBlank(message = "Telefone é obrigatorio!")
 	private String telefone;
+
+	public static Departamento transformarDTOEmObjeto(DepartamentoRequestDTO departamentoRequestDTO) {
+		return new Departamento(departamentoRequestDTO.getId(),departamentoRequestDTO.getNome(), departamentoRequestDTO.getSigla(), departamentoRequestDTO.getTelefone());
+	}
 
 }
