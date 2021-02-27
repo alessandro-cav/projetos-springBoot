@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.api.empresa.forum.enuns.Sexo;
+import br.com.api.empresa.forum.models.Empregado;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmpregadoResponseDTO implements Serializable{
+public class EmpregadoResponseDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,5 +35,11 @@ public class EmpregadoResponseDTO implements Serializable{
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataInicio;
+
+	public static EmpregadoResponseDTO tranformaObjetoEmDTO(Empregado empregado) {
+		return new EmpregadoResponseDTO(empregado.getId(), empregado.getNome(), empregado.getSobrenome(),
+				empregado.getDataNascimento(), empregado.getSexo(), empregado.getTelefone(), empregado.getEndereco(),
+				empregado.getDataInicio());
+	}
 
 }
