@@ -21,8 +21,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.api.empresa.forum.models.Departamento;
 import br.com.api.empresa.forum.requests.DepartamentoRequestDTO;
-import br.com.api.empresa.forum.response.DepartamentoResponseDTO;
-import br.com.api.empresa.forum.service.DepartamentoService;
+import br.com.api.empresa.forum.responses.DepartamentoResponseDTO;
+import br.com.api.empresa.forum.services.DepartamentoService;
+
 
 @RestController
 @RequestMapping("/departamentos")

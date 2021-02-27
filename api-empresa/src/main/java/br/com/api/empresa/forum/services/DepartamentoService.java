@@ -1,4 +1,4 @@
-package br.com.api.empresa.forum.service;
+package br.com.api.empresa.forum.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import br.com.api.empresa.forum.models.Departamento;
 import br.com.api.empresa.forum.repositorys.DepartamentoRepository;
 import br.com.api.empresa.forum.requests.DepartamentoRequestDTO;
-import br.com.api.empresa.forum.response.DepartamentoResponseDTO;
+import br.com.api.empresa.forum.responses.DepartamentoResponseDTO;
 import br.com.api.empresa.handler.DepartamentoNotFoundException;
 
 @Service

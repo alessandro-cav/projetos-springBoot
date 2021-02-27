@@ -1,4 +1,4 @@
-package br.com.api.empresa.forum.response;
+package br.com.api.empresa.forum.responses;
 
 import java.io.Serializable;
 
