@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,6 +43,7 @@ public class Empregado implements Serializable {
 	private LocalDate dataNascimento;
 	
 	@Column(name = "SEXO")
+	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	
 	@Column(name = "TELEFONE")

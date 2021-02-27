@@ -30,6 +30,7 @@ public class EmpregadoRequestDTO implements Serializable {
 	@NotBlank(message = "Sobrenome é obrigatorio!")
 	private String sobrenome;
 
+	@NotNull(message = "Data de nascimento é obrigatoria!")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
 
@@ -42,13 +43,15 @@ public class EmpregadoRequestDTO implements Serializable {
 	@NotBlank(message = "Endereço é obrigatorio!")
 	private String endereco;
 
+	@NotNull(message = "Data de inicio é obrigatoria!")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataInicio;
 
 	@NotNull(message = "idDpto é obrigatorio")
 	private Long idDpto;
 
-	public static Empregado transformaDTOEmObjeto(EmpregadoRequestDTO empregadoRequestDTO, Departamento departamento, Sexo sexo) {
+	public static Empregado transformaDTOEmObjeto(EmpregadoRequestDTO empregadoRequestDTO, Departamento departamento) {
+		Sexo sexo = Sexo.getSexo(empregadoRequestDTO.getSexo());
 		return new Empregado(empregadoRequestDTO.getId(), empregadoRequestDTO.getNome(),
 				empregadoRequestDTO.getSobrenome(), empregadoRequestDTO.getDataNascimento(),
 				sexo, empregadoRequestDTO.getTelefone(), empregadoRequestDTO.getEndereco(),
