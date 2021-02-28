@@ -15,7 +15,7 @@ import br.com.api.empresa.handler.EmpregadoNotFoundException;
 public class DepartamentoEmpregadoService {
 
 	private DepartamentoService departamentoService;
-
+	
 	public DepartamentoEmpregadoService(DepartamentoService departamentoService) {
 		this.departamentoService = departamentoService;
 	}
@@ -46,11 +46,10 @@ public class DepartamentoEmpregadoService {
 		} catch (DepartamentoNotFoundException e) {
 			throw e;
 		}
-		
+
 		if (departamento.getEmpregado().isEmpty()) {
 			throw new EmpregadoNotFoundException("Lista de empregados do " + departamento.getNome() + " esta vazia!");
 		}
-
 		List<EmpregadoResponseDTO> empregadoResponseDTOs = departamento.getEmpregado().stream()
 				.filter(e -> e.getId().equals(idEmp)).map(e -> EmpregadoResponseDTO.tranformaObjetoEmDTO(e))
 				.collect(Collectors.toList());
