@@ -2,6 +2,7 @@ package br.com.api.livraria.forum.requests;
 
 import java.io.Serializable;
 
+import br.com.api.livraria.forum.models.Editora;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,5 +27,10 @@ public class EditoraRequestDTO implements Serializable {
 	private String contato;
 
 	private String endereco;
+
+	public static Editora transformaDTOEmObjeto(EditoraRequestDTO editoraRequestDTO) {
+		return new Editora(editoraRequestDTO.getId(), editoraRequestDTO.getCodEditora(),
+				editoraRequestDTO.getRazaoSocial(),editoraRequestDTO.getFantasia(),editoraRequestDTO.getTelefone(), editoraRequestDTO.getContato(), editoraRequestDTO.getEndereco());
+	}
 
 }
