@@ -48,7 +48,7 @@ public class DepartamentoEmpregadoService {
 		}
 
 		if (departamento.getEmpregado().isEmpty()) {
-			throw new EmpregadoNotFoundException("Lista de empregados do " + departamento.getNome() + " esta vazia!");
+			throw new EmpregadoNotFoundException("Lista de empregados  esta vazia!");
 		}
 		List<EmpregadoResponseDTO> empregadoResponseDTOs = departamento.getEmpregado().stream()
 				.filter(e -> e.getId().equals(idEmp)).map(e -> EmpregadoResponseDTO.tranformaObjetoEmDTO(e))

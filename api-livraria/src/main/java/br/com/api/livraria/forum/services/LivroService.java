@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import br.com.api.livraria.forum.models.Editora;
@@ -102,6 +103,16 @@ public class LivroService {
 		livro = this.livroRepository.save(livro);
 		LivroResponseDTO livroResponseDTO = LivroResponseDTO.transformarObjetoEmDTO(livro);
 		return livroResponseDTO;
+	}
+
+	public List<LivroResponseDTO> findAll(Example<Livro> example) {
+		List<Livro> livros = this.livroRepository.findAll(example);
+		if(livros.isEmpty()) {
+			throw new LivroNotFoundException("Lista de livros esta vazia!");
+		}
+		List<LivroResponseDTO> livroResponseDTOs = livros.stream().map(l -> LivroResponseDTO.transformarObjetoEmDTO(l))
+				.collect(Collectors.toList());
+		return livroResponseDTOs;
 	}
 
 }

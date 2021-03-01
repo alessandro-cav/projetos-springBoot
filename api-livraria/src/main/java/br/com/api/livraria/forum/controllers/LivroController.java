@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,5 +63,13 @@ public class LivroController {
 	public ResponseEntity<LivroResponseDTO> update(@PathVariable(name = "id") Long id, @Valid @RequestBody LivroRequestDTO livroRequestDTO ){
 		LivroResponseDTO livroResponseDTO = this.livroService.update(id, livroRequestDTO);
 		return ResponseEntity.ok(livroResponseDTO);
+	}
+	
+	@GetMapping("/consultas")
+	public ResponseEntity<List<LivroResponseDTO>> consultas(Livro filtro){
+		ExampleMatcher exampleMatcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(StringMatcher.CONTAINING);
+		Example<Livro> example = Example.of(filtro, exampleMatcher);
+		List<LivroResponseDTO> livroResponseDTOs =  this.livroService.findAll(example);
+		return ResponseEntity.ok(livroResponseDTOs);
 	}
 }
