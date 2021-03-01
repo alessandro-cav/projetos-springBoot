@@ -22,7 +22,7 @@ public class EditoraService {
 		this.editoraRepository = editoraRepository;
 	}
 
-	private Editora findByIdEditora(Long id) {
+	public Editora findByIdEditora(Long id) {
 		Optional<Editora> editora = this.editoraRepository.findById(id);
 		if (!editora.isPresent()) {
 			throw new EditoraNotFoundException("editora nao encontrada com esse numero " + id);
